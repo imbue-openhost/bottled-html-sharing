@@ -34,10 +34,9 @@ async def upload():
     filepath = upload_dir / filename
     await file.save(str(filepath))
 
-    # Use forwarded headers from the OpenHost reverse proxy
-    proto = request.headers.get("X-Forwarded-Proto", "https")
+    # Use forwarded host from the OpenHost reverse proxy; always https
     host = request.headers.get("X-Forwarded-Host") or request.headers.get("Host", "")
-    base_url = f"{proto}://{host}"
+    base_url = f"https://{host}"
     public_url = f"{base_url}/shared/{token}/{filename}"
 
     return jsonify({"url": public_url, "token": token, "filename": filename})
