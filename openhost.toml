@@ -1,0 +1,19 @@
+[app]
+name = "html-share"
+version = "0.1.0"
+description = "Upload and serve HTML files with secret URLs"
+
+[runtime.container]
+image = "Dockerfile"
+port = 8080
+
+[routing]
+health_check = "/health"
+public_paths = ["/shared"]
+
+[resources]
+memory_mb = 128
+cpu_millicores = 100
+
+[data]
+app_data = true
