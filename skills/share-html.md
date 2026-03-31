@@ -5,8 +5,8 @@ Usage: /share-html <file_path>
 Steps:
 1. The file to upload is: $ARGUMENTS
 2. Verify the file exists. If it doesn't, tell the user and stop.
-3. Read the environment variables `OPENHOST_API_KEY` and `OPENHOST_DOMAIN`. If either is not set, tell the user to set them (e.g. `export OPENHOST_API_KEY=<token>` and `export OPENHOST_DOMAIN=https://zack.dev2-host.imbue.com`) and stop.
-4. Strip the protocol from `OPENHOST_DOMAIN` to get just the domain (e.g. `https://zack.dev2-host.imbue.com` → `zack.dev2-host.imbue.com`), then upload the file using:
+3. Read the environment variables `OPENHOST_API_KEY` and `OPENHOST_DOMAIN`. If either is not set, tell the user to set them (e.g. `export OPENHOST_API_KEY=<token>` and `export OPENHOST_DOMAIN=https://your-space.host.imbue.com`) and stop.
+4. Strip the protocol from `OPENHOST_DOMAIN` to get just the domain (e.g. `https://your-space.host.imbue.com` → `your-space.host.imbue.com`), then upload the file using:
 
 ```bash
 DOMAIN=$(echo "$OPENHOST_DOMAIN" | sed 's|^https://||')
