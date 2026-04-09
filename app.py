@@ -58,6 +58,29 @@ button {{ cursor: pointer; }}
 </style>
 </head><body>
 <h1>html-share</h1>
+<div style="margin: 1rem 0; display: flex; gap: 0.5rem; align-items: center;">
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
+    <span id="uploadStatus"></span>
+</div>
+<script>
+async function uploadFile() {{
+    const input = document.getElementById('fileInput');
+    const status = document.getElementById('uploadStatus');
+    if (!input.files.length) return;
+    status.textContent = 'Uploading...';
+    const form = new FormData();
+    form.append('file', input.files[0]);
+    try {{
+        const res = await fetch('/upload', {{ method: 'POST', body: form }});
+        if (!res.ok) throw new Error(await res.text());
+        status.textContent = '';
+        location.reload();
+    }} catch (e) {{
+        status.textContent = 'Error: ' + e.message;
+    }}
+}}
+</script>
 <p>{len(files)} file(s) uploaded</p>
 <table>
 <tr><th>File</th><th>Size</th><th>Public URL</th><th></th></tr>
