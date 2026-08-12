@@ -1,6 +1,6 @@
 # html-share
 
-An OpenHost app that lets you upload HTML files and serve them at secret public URLs.
+A Cloud in a Bottle app that lets you upload HTML files and serve them at secret public URLs.
 
 ## How it works
 
